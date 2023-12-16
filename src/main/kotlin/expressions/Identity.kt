@@ -1,6 +1,5 @@
 package expressions
 
-import operations.Operation
-import operations.UnaryOperation
-
-class Identity(override val operand: Operation) : UnaryOperation
+class Identity(val value: Expression) : Expression {
+    override fun value() = value
+}
