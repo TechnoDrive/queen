@@ -1,5 +1,5 @@
 package expressions
 
-class Identity<A>(private val value: A) : Expression {
-    override fun <A> value(): A = value
+class Identity<T>(private val value: T) : Expression {
+    override fun value() = value
 }
