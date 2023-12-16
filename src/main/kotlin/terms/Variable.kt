@@ -2,4 +2,6 @@ package terms
 
 import expressions.Expression
 
-abstract class Variable(label: String) : Expression
+class Variable(val label: String) : Expression {
+    override fun value() = label
+}
