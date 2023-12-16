@@ -1,5 +1,7 @@
 package operations
 
+import expressions.Expression
+
 interface UnaryOperation : Operation {
-    val operand: Operation
+    val operand: Expression
 }

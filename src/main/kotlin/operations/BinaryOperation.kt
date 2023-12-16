@@ -1,6 +1,8 @@
 package operations
 
+import expressions.Expression
+
 interface BinaryOperation : Operation {
-    val lhs: Operation
-    val rhs: Operation
+    val lhs: Expression
+    val rhs: Expression
 }

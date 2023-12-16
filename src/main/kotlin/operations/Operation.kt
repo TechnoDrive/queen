@@ -1,3 +1,5 @@
 package operations
 
-sealed interface Operation
+import expressions.Expression
+
+sealed interface Operation : Expression
