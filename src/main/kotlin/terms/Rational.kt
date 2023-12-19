@@ -7,6 +7,7 @@ class Rational(val n: Int, val d: Int) : Expression {
     constructor(n: Int) : this(n, 1)
 
     override fun value() = n.toDouble() / d.toDouble()
+    override fun simplify() = simplify(this)
 
     operator fun plus(other: Rational) = add(this, other)
     operator fun times(other: Rational) = multiply(this, other)
@@ -36,5 +37,11 @@ class Rational(val n: Int, val d: Int) : Expression {
 
         fun negate(x: Rational) = Rational(-x.n, x.d)
         fun invert(x: Rational) = Rational(x.d, x.n)
+
+        fun gcd(a: Int, b: Int): Int = if (b != 0) gcd(b, a % b) else a
+        fun gcd(x: Rational) = gcd(x.n, x.d)
+
+        // TODO: check if this even works lmao i have no clue
+        fun simplify(x: Rational) = gcd(x).let { x / Rational(it, it) }
     }
 }
