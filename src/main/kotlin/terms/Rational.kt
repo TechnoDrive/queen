@@ -16,7 +16,8 @@ class Rational(val n: Int, val d: Int) : Expression {
 
     operator fun unaryMinus() = negate(this)
 
-    val reciprocal = invert(this)
+    fun reciprocal() = invert(this)
+    fun isInteger() = isInteger(this)
 
     companion object {
         fun from(pair: Pair<Int, Int>) = Rational(pair.first, pair.second)
@@ -42,6 +43,10 @@ class Rational(val n: Int, val d: Int) : Expression {
         fun gcd(x: Rational) = gcd(x.n, x.d)
 
         // TODO: check if this even works lmao i have no clue
-        fun simplify(x: Rational) = gcd(x).let { x / Rational(it, it) }
+        fun simplify(x: Rational) = gcd(x).let { Rational(x.n / it, x.d / it) }
+
+        fun isInteger(x: Rational) = x.d == 1
     }
+
+    override fun toString() = simplify().let { if (it.isInteger()) "${it.n}" else "${it.n} / ${it.d}" }
 }
